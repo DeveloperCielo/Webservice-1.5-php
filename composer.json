@@ -1,8 +1,8 @@
 {
-    "name": "developercielo/webservice-1.5-php",
+    "name": "dariofg/webservice-1.5-php",
     "license": "MIT",
     "description": "SDK PHP para integração com webservice 1.5 da Cielo",
-    "homepage": "https://github.com/DeveloperCielo/Webservice-1.5-php",
+    "homepage": "https://github.com/dariofg/Webservice-1.5-php",
     "require": {
         "ext-libxml": "*",
         "php": ">=5.4"
