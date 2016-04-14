@@ -7,6 +7,16 @@ use DOMDocument;
 
 class CaptureRequestSerializer extends RequestSerializer
 {
+
+    private amountToCapture = null;
+
+    /**
+     * amount to capture
+     */
+    public function setAmountToCapture($amountToCapture){
+        $this->amountToCapture = $amountToCapture;
+    }
+
     /**
      * {@inheritDoc}
      */
@@ -67,6 +77,10 @@ class CaptureRequestSerializer extends RequestSerializer
         $requisicao->setAttribute('versao', RequestSerializer::VERSION);
 
         $this->createElementAndAppendWithNs($requisicao, 'tid', $transaction->tid);
+
+        if(!is_null($this->amountToCapture)){
+            $this->createElementAndAppendWithNs($requisicao, 'valor', $this->amountToCapture);
+        }
 
         $requisicao->appendChild($this->createDadosEc($transaction, $document));
 
