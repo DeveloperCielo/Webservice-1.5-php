@@ -78,11 +78,11 @@ class CaptureRequestSerializer extends RequestSerializer
 
         $this->createElementAndAppendWithNs($requisicao, 'tid', $transaction->tid);
 
-        if(!is_null($this->amountToCapture)){
-            $this->createElementAndAppendWithNs($requisicao, 'valor', $this->amountToCapture);
-        }
-
         $requisicao->appendChild($this->createDadosEc($transaction, $document));
+
+        if(!is_null($this->amountToCapture)){
+            $this->createElementAndAppendWithNs($requisicao, 'valor', intval($this->amountToCapture));
+        }
 
         return $requisicao;
     }
