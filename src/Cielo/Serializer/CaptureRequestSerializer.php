@@ -8,7 +8,7 @@ use DOMDocument;
 class CaptureRequestSerializer extends RequestSerializer
 {
 
-    private amountToCapture = null;
+    private $amountToCapture = null;
 
     /**
      * amount to capture
