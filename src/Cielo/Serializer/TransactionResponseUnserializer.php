@@ -57,7 +57,8 @@ class TransactionResponseUnserializer
         if (($code = $this->xpath->query('/c:erro/c:codigo')->item(0)) !== null) {
             $message = $this->xpath->query('/c:erro/c:mensagem')->item(0)->nodeValue;
 
-            throw new CieloException($message, $code->nodeValue);
+            if (strpos($message, "string value '' does not match pattern for type of validade element") === false)
+	            throw new CieloException($message, $code->nodeValue);
         }
 
         $this->readTransacao($this->transaction);
