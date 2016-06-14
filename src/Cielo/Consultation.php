@@ -233,4 +233,21 @@ class Consultation
     {
         return $this->authorization;
     }
+
+    /**
+     * @return CaptureInformation
+     */
+    public function getCaptureInformation()
+    {
+        return $this->captureInformation;
+    }
+
+    /**
+     * @return CancellationInformation
+     */
+    public function getCancellationInformation()
+    {
+        return $this->cancellationInformation;
+    }
+    
 }

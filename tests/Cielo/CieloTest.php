@@ -180,4 +180,49 @@ TRANSACAO
             true
         );
     }
+
+    /**
+     * @test
+     */
+    public function tokenRequest()
+    {
+        /* @var \PHPUnit_Framework_MockObject_MockObject|OnlyPostHttpClientInterface $client */
+        $client = $this->getMock(OnlyPostHttpClientInterface::class);
+
+        $client->expects($this->once())
+            ->method('__invoke')
+            ->with(
+                $this->equalTo(Cielo::TEST),
+                $this->logicalAnd(
+                    $this->arrayHasKey('Content-Type'),
+                    $this->arrayHasKey('Accept'),
+                    $this->arrayHasKey('User-Agent')
+                ),
+                $this->arrayHasKey('mensagem')
+            )
+            ->willReturn(
+                // @link https://developercielo.github.io/Webservice-1.5/?xml#transação-com-token
+                <<<TRANSACAO
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<retorno-token xmlns="http://ecommerce.cbmp.com.br" versao="1.2.1" id="57239017">
+  <token>
+    <dados-token>
+      <codigo-token>TuS6LeBHWjqFFtE7S3zR052Jl/KUlD+tYJFpAdlA87E=</codigo-token>
+      <status>1</status>
+      <numero-cartao-truncado>455187******0183</numero-cartao-truncado>
+    </dados-token>
+  </token>
+</retorno-token>
+TRANSACAO
+            );
+
+        $cielo = new Cielo('1006993069', '25fbb997438630f30b112d033ce2e621b34f3', Cielo::TEST, $client);
+
+        $holder = $cielo->holder('4551870000000183', 2018, 5, Holder::CVV_INFORMED, 123);
+        $holder->setName('FULANO DA SILVA');
+
+        $token = $cielo->tokenRequest($holder);
+
+        $this->assertInstanceOf(Token::class, $token);
+    }
 }

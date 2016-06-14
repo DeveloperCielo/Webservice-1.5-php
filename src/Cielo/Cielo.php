@@ -10,6 +10,8 @@ use Cielo\Serializer\TransactionResponseUnserializer;
 use Cielo\Serializer\ConsultationRequestSerializer;
 use Cielo\Serializer\CancellationRequestSerializer;
 use Cielo\Serializer\CaptureRequestSerializer;
+use Cielo\Serializer\TokenRequestSerializer;
+use Cielo\Serializer\TokenResponseUnserializer;
 
 class Cielo
 {
@@ -253,6 +255,22 @@ class Cielo
         $response = $this->sendHttpRequest($serializer->serialize($transaction));
 
         $unserializer = new TransactionResponseUnserializer($transaction);
+
+        return $unserializer->unserialize($response);
+    }
+
+    /**
+     * @param  Holder $holder
+     * @return Token
+     * @throws CieloException se algum erro ocorrer na requisição pela transação
+     */
+    public function tokenRequest(Holder $holder)
+    {
+        $serializer = new TokenRequestSerializer($this->merchant);
+
+        $response = $this->sendHttpRequest($serializer->serialize($holder));
+
+        $unserializer = new TokenResponseUnserializer;
 
         return $unserializer->unserialize($response);
     }
