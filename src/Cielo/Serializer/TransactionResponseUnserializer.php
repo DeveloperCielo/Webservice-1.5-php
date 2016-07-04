@@ -4,6 +4,7 @@ namespace Cielo\Serializer;
 
 use Cielo\Authentication;
 use Cielo\Authorization;
+use Cielo\AvsResponse;
 use Cielo\CieloException;
 use Cielo\Token;
 use Cielo\Transaction;
@@ -64,6 +65,7 @@ class TransactionResponseUnserializer
         $this->readFormaPagamento($this->transaction);
         $this->readAutenticacao($this->transaction);
         $this->readAutorizacao($this->transaction);
+        $this->readAvsResponse($this->transaction);
         $this->readToken($this->transaction);
         $this->readCapture($this->transaction);
         $this->readCancellation($this->transaction);
@@ -155,6 +157,21 @@ class TransactionResponseUnserializer
         $authorization->setNsu($this->getValue('//c:transacao/c:autorizacao/c:nsu'));
 
         $transaction->setAuthorization($authorization);
+    }
+
+    /**
+     * @param Transaction $transaction
+     */
+    private function readAvsResponse($transaction)
+    {
+        $avsResponse = new AvsResponse();
+
+        $avsResponse->setCodigoAvsCep($this->getValue('//c:transacao/c:autorizacao/c:codigo-avs-cep'));
+        $avsResponse->setMensagemAvsCep($this->getValue('//c:transacao/c:autorizacao/c:mensagem-avs-cep'));
+        $avsResponse->setCodigoAvsEnd($this->getValue('//c:transacao/c:autorizacao/c:codigo-avs-end'));
+        $avsResponse->setMensagemAvsEnd($this->getValue('//c:transacao/c:autorizacao/c:mensagem-avs-end'));
+
+        $transaction->setAvsResponse($avsResponse);
     }
 
     /**

@@ -34,7 +34,7 @@ class Capture
      * @var int
      */
     private $status;
-    
+
     /**
      * @var Authorization
      */
@@ -62,7 +62,7 @@ class Capture
         $this->order = new Order;
         $this->paymentMethod = new PaymentMethod;
         $this->setTidOrOrderNumber($tid);
-        
+
     }
 
     /**
@@ -80,14 +80,14 @@ class Capture
      */
     public function setTidOrOrderNumber($tid = null)
     {
-        
+
         if (strlen($tid) < 1 || strlen($tid) > 20) {
             throw new \UnexpectedValueException("O string de consulta (Tid) deve ter entre 1 à 20 caracteres", 1);
         }
 
         $this->tid = $tid;
-            
-        
+
+
     }
 
     /**
@@ -160,6 +160,14 @@ class Capture
     public function setCancellationInformation(CancellationInformation $cancellationInformation)
     {
         $this->cancellationInformation = $cancellationInformation;
+    }
+
+    /**
+     * @param string $avsResponse
+     */
+    public function setAvsResponse($avsResponse)
+    {
+        $this->avsResponse = $avsResponse;
     }
 
     /**

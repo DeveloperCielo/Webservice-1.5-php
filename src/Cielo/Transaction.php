@@ -115,6 +115,11 @@ class Transaction
     private $avs;
 
     /**
+     * @var string
+     */
+    private $avsResponse;
+
+    /**
      * @var Token
      */
     private $token;
@@ -307,7 +312,15 @@ class Transaction
     {
         return $this->avs;
     }
-    
+
+    /**
+     * @return string
+     */
+    public function getAvsResponse()
+    {
+        return $this->avsResponse;
+    }
+
     /**
      * @return Token
      */
@@ -438,6 +451,14 @@ class Transaction
     public function setAvs($avs)
     {
         $this->avs = $avs;
+    }
+
+    /**
+     * @param string $avsResponse
+     */
+    public function setAvsResponse($avsResponse)
+    {
+        $this->avsResponse = $avsResponse;
     }
 
     /**
