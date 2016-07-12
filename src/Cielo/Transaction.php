@@ -331,7 +331,7 @@ class Transaction
     {
         $this->holder = $holder;
 
-        if (($bin = substr($holder->getCreditCardNumber(), 0, 6)) !== false) {
+        if ($bin = substr($holder->getCreditCardNumber(), 0, 6)) {
             $this->setBin($bin);
         }
     }
