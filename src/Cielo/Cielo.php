@@ -247,10 +247,12 @@ class Cielo
      * @return Capture
      * @throws CieloException se algum erro ocorrer na requisição pela transação
      */
-    public function captureRequest(Capture $transaction)
+    public function captureRequest(Capture $transaction, $amountToCapture = null)
     {
 
         $serializer = new CaptureRequestSerializer();
+
+        $serializer->setAmountToCapture($amountToCapture);
 
         $response = $this->sendHttpRequest($serializer->serialize($transaction));
 
