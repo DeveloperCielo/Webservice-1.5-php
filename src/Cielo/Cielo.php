@@ -121,6 +121,15 @@ class Cielo
     {
         return new Capture($this->merchant, $tid);
     }
+    
+    /**
+     * @param  string      $tid
+     * @return Consultation
+     */
+    public function authorization($tid = null)
+    {
+        return new Authorization($this->merchant, $tid);
+    }
 
     /**
      * @param  string     $issuer
@@ -176,12 +185,12 @@ class Cielo
     }
 
     /**
-     * @param  Transaction $transaction
+     * @param  Consultation $transaction
      * @return Transaction
      * @throws CieloException se algum erro ocorrer com na requisição pela
      * autorização
      */
-    public function authorizationRequest(Transaction $transaction)
+    public function authorizationRequest(Consultation $transaction)
     {
         $serializer = new AuthorizationRequestSerializer();
 
@@ -274,4 +283,5 @@ class Cielo
 
         return $unserializer->unserialize($response);
     }
+
 }
