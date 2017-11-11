@@ -2,7 +2,7 @@
 
 namespace Cielo;
 
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @author Andrey K. Vital <andreykvital@gmail.com>
@@ -63,7 +63,7 @@ class TransactionTest extends TestCase
     public function getAuthentication()
     {
         /* @var Authentication $authentication */
-        $authentication = $this->getMock(Authentication::class);
+        $authentication = $this->createMock(Authentication::class);
 
         $this->transaction->setAuthentication($authentication);
 
@@ -76,7 +76,7 @@ class TransactionTest extends TestCase
     public function getAuthorization()
     {
         /* @var Authorization $authorization */
-        $authorization = $this->getMock(Authorization::class);
+        $authorization = $this->createMock(Authorization::class);
 
         $this->transaction->setAuthorization($authorization);
 
@@ -88,7 +88,7 @@ class TransactionTest extends TestCase
      */
     public function setReturnURLThrowsUnexpectedValue()
     {
-        $this->setExpectedException(\UnexpectedValueException::class);
+        $this->expectException(\UnexpectedValueException::class);
 
         $this->transaction->setReturnURL(null);
     }
@@ -98,7 +98,7 @@ class TransactionTest extends TestCase
      */
     public function setAuthorizeThrowsUnexpectedValue()
     {
-        $this->setExpectedException(\UnexpectedValueException::class);
+        $this->expectException(\UnexpectedValueException::class);
 
         $this->transaction->setAuthorize(-1);
     }
@@ -108,7 +108,7 @@ class TransactionTest extends TestCase
      */
     public function setCaptureThrowsUnexpectedValue()
     {
-        $this->setExpectedException(\UnexpectedValueException::class);
+        $this->expectException(\UnexpectedValueException::class);
 
         $this->transaction->setCapture(0);
     }
@@ -128,7 +128,7 @@ class TransactionTest extends TestCase
      */
     public function setFreeFieldThrowsUnexpectedValue()
     {
-        $this->setExpectedException(\UnexpectedValueException::class);
+        $this->expectException(\UnexpectedValueException::class);
 
         $this->transaction->setFreeField(str_repeat('1', 129));
     }
@@ -138,7 +138,7 @@ class TransactionTest extends TestCase
      */
     public function setBinThrowsUnexpectedValue()
     {
-        $this->setExpectedException(\UnexpectedValueException::class);
+        $this->expectException(\UnexpectedValueException::class);
 
         $this->transaction->setBin(false);
     }
@@ -158,7 +158,7 @@ class TransactionTest extends TestCase
      */
     public function setGenerateTokenThrowsUnexpectedValue()
     {
-        $this->setExpectedException(\UnexpectedValueException::class);
+        $this->expectException(\UnexpectedValueException::class);
 
         $this->transaction->setGenerateToken(0);
     }

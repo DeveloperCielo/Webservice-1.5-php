@@ -2,7 +2,7 @@
 
 namespace Cielo;
 
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @author Andrey K. Vital <andreykvital@gmail.com>
@@ -92,7 +92,7 @@ class HolderTest extends TestCase
      */
     public function setNameThrowsUnexpectedValue()
     {
-        $this->setExpectedException(\UnexpectedValueException::class);
+        $this->expectException(\UnexpectedValueException::class);
 
         $this->holder->setName(null);
     }
@@ -112,7 +112,7 @@ class HolderTest extends TestCase
      */
     public function setTokenThrowsUnexpectedValue()
     {
-        $this->setExpectedException(\UnexpectedValueException::class);
+        $this->expectException(\UnexpectedValueException::class);
 
         $this->holder->setToken(null);
     }
@@ -122,7 +122,7 @@ class HolderTest extends TestCase
      */
     public function setCVVThrowsUnexpectedValue()
     {
-        $this->setExpectedException(\UnexpectedValueException::class);
+        $this->expectException(\UnexpectedValueException::class);
 
         $this->holder->setCVV(null);
     }
@@ -150,7 +150,7 @@ class HolderTest extends TestCase
      */
     public function setExpirationThrowsUnexpectedValue($year, $month)
     {
-        $this->setExpectedException(\UnexpectedValueException::class);
+        $this->expectException(\UnexpectedValueException::class);
 
         $this->holder->setExpiration($year, $month);
     }
@@ -172,7 +172,7 @@ class HolderTest extends TestCase
      */
     public function setCVVIndicatorThrowsUnexpectedValue()
     {
-        $this->setExpectedException(\UnexpectedValueException::class);
+        $this->expectException(\UnexpectedValueException::class);
 
         $this->holder->setCVVIndicator(-1);
     }
@@ -182,7 +182,7 @@ class HolderTest extends TestCase
      */
     public function setCreditCardNumberThrowsUnexpectedValue()
     {
-        $this->setExpectedException(\UnexpectedValueException::class);
+        $this->expectException(\UnexpectedValueException::class);
 
         $this->holder->setCreditCardNumber(false);
     }

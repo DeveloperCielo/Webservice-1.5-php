@@ -3,7 +3,7 @@
 namespace Cielo;
 
 use Cielo\Http\OnlyPostHttpClientInterface;
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase;
 
 class CieloTest extends TestCase
 {
@@ -25,7 +25,7 @@ class CieloTest extends TestCase
      */
     public function withInvalidEndpoint()
     {
-        $this->setExpectedException(\UnexpectedValueException::class);
+        $this->expectException(\UnexpectedValueException::class);
 
         new Cielo(
             '1006993069',
@@ -108,7 +108,7 @@ class CieloTest extends TestCase
     public function transactionRequest()
     {
         /* @var \PHPUnit_Framework_MockObject_MockObject|OnlyPostHttpClientInterface $client */
-        $client = $this->getMock(OnlyPostHttpClientInterface::class);
+        $client = $this->createMock(OnlyPostHttpClientInterface::class);
 
         $client->expects($this->once())
             ->method('__invoke')
@@ -187,7 +187,7 @@ TRANSACAO
     public function tokenRequest()
     {
         /* @var \PHPUnit_Framework_MockObject_MockObject|OnlyPostHttpClientInterface $client */
-        $client = $this->getMock(OnlyPostHttpClientInterface::class);
+        $client = $this->createMock(OnlyPostHttpClientInterface::class);
 
         $client->expects($this->once())
             ->method('__invoke')
