@@ -2,7 +2,7 @@
 
 namespace Cielo;
 
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @author Andrey K. Vital <andreykvital@gmail.com>

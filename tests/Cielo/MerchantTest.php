@@ -2,7 +2,7 @@
 
 namespace Cielo;
 
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @author Andrey K. Vital <andreykvital@gmail.com>
@@ -74,7 +74,7 @@ class MerchantTest extends TestCase
      */
     public function setAffiliationIdThrowsUnexpectedValue($affiliationId)
     {
-        $this->setExpectedException(\UnexpectedValueException::class);
+        $this->expectException(\UnexpectedValueException::class);
 
         $this->merchant->setAffiliationId($affiliationId);
     }
@@ -86,7 +86,7 @@ class MerchantTest extends TestCase
      */
     public function setAffiliationKeyThrowsUnexpectedValue($affiliationKey)
     {
-        $this->setExpectedException(\UnexpectedValueException::class);
+        $this->expectException(\UnexpectedValueException::class);
 
         $this->merchant->setAffiliationKey($affiliationKey);
     }

@@ -2,7 +2,7 @@
 
 namespace Cielo;
 
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase;
 
 class PaymentMethodTest extends TestCase
 {
@@ -58,7 +58,7 @@ class PaymentMethodTest extends TestCase
      */
     public function setIssuerThrowsUnexpectedValue()
     {
-        $this->setExpectedException(\UnexpectedValueException::class);
+        $this->expectException(\UnexpectedValueException::class);
 
         $this->paymentMethod->setIssuer('invalid');
     }
@@ -78,7 +78,7 @@ class PaymentMethodTest extends TestCase
      */
     public function setProductThrowsUnexpectedValue()
     {
-        $this->setExpectedException(\UnexpectedValueException::class);
+        $this->expectException(\UnexpectedValueException::class);
 
         $this->paymentMethod->setProduct('invalid');
     }
@@ -116,7 +116,7 @@ class PaymentMethodTest extends TestCase
      */
     public function setInstallmentsThrowsUnexpectedValue($product, $installments)
     {
-        $this->setExpectedException(\UnexpectedValueException::class);
+        $this->expectException(\UnexpectedValueException::class);
 
         $this->paymentMethod->setProduct($product);
 

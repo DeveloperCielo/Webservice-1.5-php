@@ -2,7 +2,7 @@
 
 namespace Cielo;
 
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @author Andrey K. Vital <andreykvital@gmail.com>
@@ -35,7 +35,7 @@ class OrderTest extends TestCase
      */
     public function setNumberThrowsUnexpectedValue()
     {
-        $this->setExpectedException(\UnexpectedValueException::class);
+        $this->expectException(\UnexpectedValueException::class);
 
         $this->order->setNumber('');
     }
@@ -45,7 +45,7 @@ class OrderTest extends TestCase
      */
     public function setTotalThrowsUnexpectedValue()
     {
-        $this->setExpectedException(\UnexpectedValueException::class);
+        $this->expectException(\UnexpectedValueException::class);
 
         $this->order->setTotal(10.00);
     }
@@ -55,7 +55,7 @@ class OrderTest extends TestCase
      */
     public function setCurrencyThrowsUnexpectedValue()
     {
-        $this->setExpectedException(\UnexpectedValueException::class);
+        $this->expectException(\UnexpectedValueException::class);
 
         $this->order->setCurrency(null);
     }
@@ -65,7 +65,7 @@ class OrderTest extends TestCase
      */
     public function setDateTimeThrowsUnexpectedValue()
     {
-        $this->setExpectedException(\UnexpectedValueException::class);
+        $this->expectException(\UnexpectedValueException::class);
 
         $this->order->setDateTime('2015-07-20');
     }
@@ -75,7 +75,7 @@ class OrderTest extends TestCase
      */
     public function setDescriptionThrowsUnexpectedValue()
     {
-        $this->setExpectedException(\UnexpectedValueException::class);
+        $this->expectException(\UnexpectedValueException::class);
 
         $this->order->setDescription(str_repeat('foo', 1024 / 3 + 1));
     }
@@ -85,7 +85,7 @@ class OrderTest extends TestCase
      */
     public function setLanguageThrowsUnexpectedValue()
     {
-        $this->setExpectedException(\UnexpectedValueException::class);
+        $this->expectException(\UnexpectedValueException::class);
 
         $this->order->setLanguage('DE');
     }
@@ -95,7 +95,7 @@ class OrderTest extends TestCase
      */
     public function setShippingThrowsUnexpectedValue()
     {
-        $this->setExpectedException(\UnexpectedValueException::class);
+        $this->expectException(\UnexpectedValueException::class);
 
         $this->order->setShipping(20.00);
     }
@@ -105,7 +105,7 @@ class OrderTest extends TestCase
      */
     public function setSoftDescriptorThrowsUnexpectedValue()
     {
-        $this->setExpectedException(\UnexpectedValueException::class);
+        $this->expectException(\UnexpectedValueException::class);
 
         $this->order->setSoftDescriptor(str_repeat('9', 14));
     }
