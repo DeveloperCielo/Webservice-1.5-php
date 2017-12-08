@@ -67,6 +67,10 @@ class CancellationRequestSerializer extends RequestSerializer
         $requisicao->setAttribute('versao', RequestSerializer::VERSION);
 
         $this->createElementAndAppendWithNs($requisicao, 'tid', $transaction->tid);
+        
+        if ($transaction->getValue() !== null) {
+            $this->createElementAndAppendWithNs($requisicao, 'valor', $transaction->getValue());
+        }
 
         $requisicao->appendChild($this->createDadosEc($transaction, $document));
 

@@ -51,6 +51,11 @@ class Cancellation
     private $cancellationInformation;
 
     /**
+     * @var float
+     */
+    private $value;
+
+    /**
      * @param Merchant      $merchant
      * @param string        $tid
      */
@@ -171,6 +176,14 @@ class Cancellation
     }
 
     /**
+     * @param float $value
+     */
+    public function setValue($value)
+    {
+        $this->value = $value;
+    }
+
+    /**
      * @return Consultation Id
      */
     public function getCancellationId()
@@ -248,5 +261,13 @@ class Cancellation
     public function getCancellationInformation()
     {
         return $this->cancellationInformation;
+    }
+
+    /**
+     * @return float
+     */
+    public function getValue()
+    {
+        return $this->value;
     }
 }
