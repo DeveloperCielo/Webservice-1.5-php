@@ -70,6 +70,11 @@ class CaptureRequestSerializer extends RequestSerializer
 
         $requisicao->appendChild($this->createDadosEc($transaction, $document));
 
+        if( !empty($transaction->getOrder()->getTotal()) ) {
+            $valor = $document->createElement('valor', $transaction->getOrder()->getTotal());
+            $requisicao->appendChild($valor);
+        }
+
         return $requisicao;
     }
 }
