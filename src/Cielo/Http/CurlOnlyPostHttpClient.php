@@ -3,7 +3,7 @@
 namespace Cielo\Http;
 
 /**
- * @author Andrey K. Vital <andreykvital@gmail.com>
+ * @author Andrey K. Vital <andreykvital@gmail.com> | Davi Crystal <davicrystal@gmail.com>
  * @codeCoverageIgnoreFile
  */
 final class CurlOnlyPostHttpClient implements OnlyPostHttpClientInterface
